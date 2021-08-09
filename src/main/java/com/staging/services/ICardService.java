@@ -8,7 +8,7 @@ public interface ICardService {
 	public Card get(int id);
 	public Card getBySuitAndValue(String suit, int value);
 	public List<Card> getAll();
-	public List<Card> getAllBySuit(int suit);
+	public List<Card> getAllBySuit(String suit);
 	public Card add(Card c);
 	public Card update(Card c);
 	public void delete(int id);

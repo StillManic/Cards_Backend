@@ -24,7 +24,8 @@ public class CardService implements ICardService {
 	
 	@Override
 	public Card getBySuitAndValue(String suit, int value) {
-		return this.cr.findBySuitAndValue(Card.Suit.valueOf(suit.strip().toUpperCase()).ordinal(), value);
+		Card.Suit cardSuit = Card.Suit.valueOf(suit.strip().toUpperCase());
+		return this.cr.findBySuitAndValue(cardSuit, value);
 	}
 
 	@Override
@@ -33,9 +34,9 @@ public class CardService implements ICardService {
 	}
 	
 	@Override
-	public List<Card> getAllBySuit(int suit) {
-//		Card.Suit cardSuit = Card.Suit.valueOf(suit.strip().toUpperCase());
-		return this.cr.findAllBySuit(suit);
+	public List<Card> getAllBySuit(String suit) {
+		Card.Suit cardSuit = Card.Suit.valueOf(suit.strip().toUpperCase());
+		return this.cr.findAllBySuit(cardSuit);
 	}
 
 	@Override

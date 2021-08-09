@@ -9,6 +9,6 @@ import com.staging.models.Card;
 
 @Repository
 public interface ICardRepository extends CrudRepository<Card, Integer> {
-	public List<Card> findAllBySuit(int suit);
-	public Card findBySuitAndValue(int suit, int value);
+	public List<Card> findAllBySuit(Card.Suit suit);
+	public Card findBySuitAndValue(Card.Suit suit, int value);
 }

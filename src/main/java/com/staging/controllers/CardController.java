@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,18 +33,17 @@ public class CardController {
 		return this.cs.getAll();
 	}
 	
-	@GetMapping("/card/{id}")
+	@GetMapping("/{id}")
 	public Card getById(@PathVariable("id") int id) {
 		return this.cs.get(id);
 	}
 	
 	@GetMapping("/suits/{suit}")
-	public List<Card> getBySuit(@PathVariable("suit") int suit) {
-		System.out.println(suit);
+	public List<Card> getBySuit(@PathVariable("suit") String suit) {
 		return this.cs.getAllBySuit(suit);
 	}
 	
-	@GetMapping("/card/{suit}/{value}")
+	@GetMapping("/suits/{suit}/{value}")
 	public Card getBySuitAndValue(@PathVariable("suit") String suit, @PathVariable("value") int value) {
 		System.out.println("Stupid thing");
 		return this.cs.getBySuitAndValue(suit, value);
