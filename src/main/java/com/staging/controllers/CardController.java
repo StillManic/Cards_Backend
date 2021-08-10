@@ -45,7 +45,6 @@ public class CardController {
 	
 	@GetMapping("/suits/{suit}/{value}")
 	public Card getBySuitAndValue(@PathVariable("suit") String suit, @PathVariable("value") int value) {
-		System.out.println("Stupid thing");
 		return this.cs.getBySuitAndValue(suit, value);
 	}
 	
