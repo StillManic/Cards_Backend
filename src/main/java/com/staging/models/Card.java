@@ -1,5 +1,7 @@
 package com.staging.models;
 
+import java.util.Objects;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -29,11 +31,22 @@ public class Card {
 	
 	private int value;
 	
+	private String card_img;
+	
 	public Card() {}
 	
-	public Card(Suit suit, Integer value) {
+	public Card(Suit suit, Integer value, String card_img) {
 		this.suit = suit;
 		this.value = value;
+		this.card_img = card_img;
+	}
+
+	public String getImage() {
+		return card_img;
+	}
+
+	public void setImage(String card_img) {
+		this.card_img = card_img;
 	}
 
 	public int getId() {
@@ -76,12 +89,7 @@ public class Card {
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + id;
-		result = prime * result + ((suit == null) ? 0 : suit.hashCode());
-		result = prime * result + value;
-		return result;
+		return Objects.hash(id, card_img, suit, value);
 	}
 
 	@Override
@@ -93,17 +101,14 @@ public class Card {
 		if (getClass() != obj.getClass())
 			return false;
 		Card other = (Card) obj;
-		if (id != other.id)
-			return false;
-		if (suit != other.suit)
-			return false;
-		if (value != other.value)
-			return false;
-		return true;
+		return id == other.id && Objects.equals(card_img, other.card_img) && suit == other.suit && value == other.value;
 	}
 
 	@Override
 	public String toString() {
-		return "Card [id=" + id + ", suit=" + suit + ", value=" + value + ", getFace()=" + getFace() + "]";
+		return "Card [id=" + id + ", suit=" + suit + ", value=" + value + ", image=" + card_img + "]";
 	}
+
+
+
 }
