@@ -70,22 +70,12 @@ public class CardController {
 		return ret;
 	}
 	
-//	@SuppressWarnings("unchecked")
-//	@GetMapping("/shuffled/war")
-//	public List<Card>[] warDeck(){
-//		List<Card> deck = this.getShuffled();
-//		List<Card>[] splitDeck = new ArrayList[2]; 
-//		splitDeck[0] = deck.subList(0, 26);
-//		splitDeck[1] = deck.subList(26, 52);
-//		
-//		return splitDeck;
-//	}
-	
 	@GetMapping("/shuffled/war")
-	public Map.Entry<List<Card>, List<Card>> warDeck(){
+	public List<List<Card>> warDeck() {
 		List<Card> deck = this.getShuffled();
-		Map.Entry<List<Card>, List<Card>> splitDeck;
-		splitDeck = Map.entry(deck.subList(0, 26), deck.subList(26, 52));
+		List<List<Card>> splitDeck = new ArrayList<List<Card>>(2);
+		splitDeck.add(deck.subList(0, 26));
+		splitDeck.add(deck.subList(26, 52));
 		return splitDeck;
 	}
 }
