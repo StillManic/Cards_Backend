@@ -3,11 +3,10 @@ package com.staging.controllers;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -69,5 +68,24 @@ public class CardController {
 		List<Card> ret = new ArrayList<Card>(amount);
 		for (int i = 0; i < amount; i++) ret.add(deck.get(i));
 		return ret;
+	}
+	
+//	@SuppressWarnings("unchecked")
+//	@GetMapping("/shuffled/war")
+//	public List<Card>[] warDeck(){
+//		List<Card> deck = this.getShuffled();
+//		List<Card>[] splitDeck = new ArrayList[2]; 
+//		splitDeck[0] = deck.subList(0, 26);
+//		splitDeck[1] = deck.subList(26, 52);
+//		
+//		return splitDeck;
+//	}
+	
+	@GetMapping("/shuffled/war")
+	public Map.Entry<List<Card>, List<Card>> warDeck(){
+		List<Card> deck = this.getShuffled();
+		Map.Entry<List<Card>, List<Card>> splitDeck;
+		splitDeck = Map.entry(deck.subList(0, 26), deck.subList(26, 52));
+		return splitDeck;
 	}
 }
